@@ -1,0 +1,21 @@
+The editor must have:
+- A "sheet", ment to wright on it
+- A menu with:
+    - File:
+        DONE- New
+        DONE- Save
+        DONE- Save as
+        DONE- Open
+        DONE- Close
+    - Tools:
+        - Change font
+        - Change font size
+        - Change encryption
+    HALF DONE- Commands
+- Word counting
+
+DONE-->PASSWORD PROTECTED!!
+
+
+
+MAKE A PROGRAM FOR CREATING A PASSWORD
