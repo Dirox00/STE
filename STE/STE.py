@@ -123,6 +123,39 @@ def exitFile():
     else:
         pass
 
+def about():
+    aboutText = '''This text editor encrypts the text you write automatically on saving with your personal password, and decrypts it when opened. It doesn store anywhere your passwords (nor as plain text or hashed) and the plain text, therefore, if you loose or forget your password, you won't be able to read your ecrypted files. A password recovery tool might be implemented on a future, but that will probably decrease the security.
+    '''
+
+    aboutInfo = Toplevel(window)
+    aboutInfo.title('About STE')
+
+    aboutTxt = ScrolledText(aboutInfo, padx=50, pady=70, wrap=WORD)
+    aboutTxt.pack(expand=True, fill=BOTH, padx=60, pady=20)
+    aboutTxt.insert('1.0', aboutText)
+
+    aboutInfo.mainloop()
+
+def commands():
+    commandsText = '''  Crtl + s --> Save
+    Crtl + o --> open
+    Crtl + n --> new
+    Crtl + c --> copy
+    Crtl + v --> paste
+    Crtl + x --> cut
+    '''
+
+    commandsInfo = Toplevel(window)
+    commandsInfo.title('Commands')
+
+    commandsTxt = ScrolledText(commandsInfo, padx=50, pady=70, wrap=WORD)
+    commandsTxt.pack(expand=True, fill=BOTH, padx=60, pady=20)
+    commandsTxt.insert('1.0', commandsText)
+
+    commandsInfo.mainloop()
+
+
+
 window = Tk()
 window.geometry('1000x800')
 
@@ -151,13 +184,13 @@ filemenu.add_command(label="Exit", command=exitFile)
 
 helpmenu = Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
-helpmenu.add_command(label="Commands", command=None)
-helpmenu.add_command(label="About...", command=None)
+helpmenu.add_command(label="Commands", command=commands)
+helpmenu.add_command(label="About...", command=about)
 
 window.config(menu=menu)
 
 global txt
-var = StringVar()
+# var = StringVar()
 txt = ScrolledText(window, padx=50, pady=70, wrap=WORD)
 txt.pack(expand=True, fill=BOTH, padx=60, pady=20)
 
