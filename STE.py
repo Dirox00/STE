@@ -36,9 +36,21 @@ def hasher(data):
 
 global filename
 filename = ''
+global password
+password = ''
+
+def askPasswd():
+    global password
+
+    inputPasswd = askstring('Password', 'Enter your password')
+    password = hasher(inputPasswd)
+    del inputPasswd #for not storing password in plain text
 
 def save(event=False):
     global filename 
+
+    if not password:
+        askPasswd()
 
     content = txt.get('1.0', END)
     if not filename:
@@ -55,6 +67,8 @@ def save(event=False):
 def saveAs(event=False):
     global filename 
 
+    askPasswd()
+
     content = txt.get('1.0', END)
     filename = filedialog.asksaveasfilename(initialdir = "/home",title = "Select file's name and location",filetypes = (("Text file","*.txt"),("all files","*.*")))
     
@@ -69,6 +83,8 @@ def saveAs(event=False):
 def new(event=False):
     global filename 
 
+    askPasswd()
+
     filename = filedialog.asksaveasfilename(initialdir = "/home",title = "Select file's name and location",filetypes = (("Text file","*.txt"),("all files","*.*")))
     if type(filename) != tuple and filename:
         window.title("Secure Text Editor-{}".format(filename))
@@ -78,6 +94,8 @@ def new(event=False):
 
 def openfile(event=False):
     global filename
+
+    askPasswd()
 
     filename = filedialog.askopenfilename(initialdir = "/home",title = "Select file",filetypes = (("Text file","*.txt"), ("all files","*.*")))
 
@@ -106,10 +124,10 @@ def exitFile():
 window = Tk()
 window.geometry('1000x800')
 
-inputPasswd = askstring('Password', 'Enter your password')
-global password
-password = hasher(inputPasswd)
-del inputPasswd #for not storing password in plain text
+# inputPasswd = askstring('Password', 'Enter your password')
+# global password
+# password = hasher(inputPasswd)
+# del inputPasswd #for not storing password in plain text
 
 
 if filename:

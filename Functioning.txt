@@ -1,4 +1,0 @@
-FUNCTIONING:
-1. Creates/opens, decrypts and edits a txt doc
-2. When saving, it encrypts the content, so no raw text is saved on the computer.
-3. Password protected 
