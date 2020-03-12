@@ -154,6 +154,22 @@ def commands():
 
     commandsInfo.mainloop()
 
+def count():
+    content = txt.get('1.0', END)
+    if set(content) == {' '}:
+        content = ''
+    try:
+        selected = txt.get(SEL_FIRST, SEL_LAST)
+    except TclError:
+        selected = ''
+    msg = '''    Words: {}
+    Characters: {}
+
+    Selected words: {}
+    Selected characters: {}
+    '''.format(len(content.split()), len(content)-1, len(selected.split()), len(selected))
+    showinfo('count', msg)
+
 
 
 window = Tk()
@@ -181,6 +197,10 @@ filemenu.add_command(label="Save", command=save)
 filemenu.add_command(label="Save as", command=saveAs)
 filemenu.add_separator()
 filemenu.add_command(label="Exit", command=exitFile)
+
+toolsmenu = Menu(menu)
+menu.add_cascade(label="Tools", menu=toolsmenu)
+toolsmenu.add_command(label="Count", command=count)
 
 helpmenu = Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
